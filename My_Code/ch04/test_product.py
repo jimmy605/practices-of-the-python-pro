@@ -1,10 +1,14 @@
-import unittest
-
 from product import Product
 
-class ProductTestCase(unittest.TestCase):
+class TestProduct():
     def test_transform_name_for_sku(self):
         small_black_shoes = Product('shoes', 'S', 'black')
-        expected_value = 'SHOES'
-        actual_value = small_black_shoes.transform_name_for_sku()
-        self.assertEqual(expected_value, actual_value)
+        assert small_black_shoes.transform_name_for_sku() == 'SHOES'
+    
+    def test_transform_color_for_sku(self):
+        small_black_shoes = Product('shoes', 'S', 'black')
+        assert small_black_shoes.transform_color_for_sku() == 'BLACK'
+    
+    def test_generate_sku(self):
+        small_black_shoes = Product('shoes', 'S', 'black')
+        assert small_black_shoes.generate_sku() == 'SHOES-S-BLACK'
